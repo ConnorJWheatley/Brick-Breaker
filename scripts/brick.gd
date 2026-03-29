@@ -1,17 +1,14 @@
+class_name Brick
+
 extends RigidBody2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+@onready var sprite = $Sprite2D
+@onready var collision_shape = $CollisionShape2D
 
 func hit():
 	GameManager.add_points(1)
-	$Sprite2D.visible = false
-	$CollisionShape2D.disabled = true
+	sprite.visible = false
+	collision_shape.disabled = true
 	
 	var bricks_left = get_tree().get_nodes_in_group("Brick")
 	if bricks_left.size() == 1:

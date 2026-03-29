@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://djwhkbbgpo7qi"]
 
 [ext_resource type="Script" uid="uid://dc0leb1m5wt77" path="res://scripts/ball.gd" id="1_cxlvu"]
-[ext_resource type="Texture2D" uid="uid://c55fx6r5gy5nn" path="res://sprites/ball.png" id="2_f7cbr"]
+[ext_resource type="Texture2D" uid="uid://7eq420ybp1xf" path="res://sprites/new_ball.png" id="2_cxlvu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4dx81"]
 radius = 5.0
@@ -13,7 +13,9 @@ platform_floor_layers = 4294967040
 script = ExtResource("1_cxlvu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=784730413]
-texture = ExtResource("2_f7cbr")
+position = Vector2(-5.9604645e-08, -1.1920929e-07)
+scale = Vector2(0.155, 0.155)
+texture = ExtResource("2_cxlvu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1929156242]
 shape = SubResource("CircleShape2D_4dx81")

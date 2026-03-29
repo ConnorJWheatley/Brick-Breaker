@@ -1,6 +1,8 @@
 class_name Ball
 extends CharacterBody2D
 
+@onready var ball_sprite = $Sprite2D
+
 var speed = 200
 var direction = Vector2.DOWN
 var is_active = true
@@ -18,7 +20,8 @@ func _physics_process(delta: float) -> void:
 func physics_collision_detection(collision: KinematicCollision2D) -> void:
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())
-		# Push ball out of paddle slightlyposition += collision.get_normal() * 2
+		# Push ball out of paddle slightly
+		position += collision.get_normal() * 2
 		
 		if collision.get_collider().has_method("hit"):
 			collision.get_collider().hit()
@@ -32,8 +35,11 @@ func arkanoid_collision_detection(collision: KinematicCollision2D, ball: Ball) -
 			ball.velocity = new_direction * ball.speed
 		else:
 			ball.velocity = ball.velocity.bounce(collision.get_normal())
-			if collision.get_collider().has_method("hit"):
-				collision.get_collider().hit()
+			if collider is Brick:
+				var sprite = collider.get_node("Sprite2D") as Sprite2D
+				var brick_colour = sprite.modulate
+				ball_sprite.modulate = brick_colour
+				collider.hit()
 
 func game_over():
 	GameManager.score = 0
