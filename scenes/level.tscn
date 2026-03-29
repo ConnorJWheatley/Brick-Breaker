@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://c5ye4vfb86ila"]
+
+[ext_resource type="PackedScene" uid="uid://b1ce7222j5do7" path="res://scenes/paddle.tscn" id="1_2q6dc"]
+[ext_resource type="Script" uid="uid://cbr82k1ry7rcw" path="res://scripts/level.gd" id="1_w8frs"]
+[ext_resource type="PackedScene" uid="uid://djwhkbbgpo7qi" path="res://scenes/ball.tscn" id="2_w7c3h"]
+[ext_resource type="Texture2D" uid="uid://dn4qxcn23bpgi" path="res://sprites/background.png" id="4_mx8sn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7c3h"]
+size = Vector2(8, 274)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8frs"]
+size = Vector2(8, 274)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mx8sn"]
+size = Vector2(496, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppgk2"]
+size = Vector2(498, 8)
+
+[node name="Level" type="Node2D" unique_id=987633441]
+script = ExtResource("1_w8frs")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1317101444]
+position = Vector2(240, 135)
+
+[node name="Paddle" parent="." unique_id=880642036 instance=ExtResource("1_2q6dc")]
+position = Vector2(240, 239)
+
+[node name="Ball" parent="." unique_id=2095934237 instance=ExtResource("2_w7c3h")]
+position = Vector2(240, 223)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=865495383]
+
+[node name="Left Wall" type="CollisionShape2D" parent="Walls" unique_id=1083636553]
+position = Vector2(-4, 135)
+shape = SubResource("RectangleShape2D_w7c3h")
+
+[node name="Right Wall" type="CollisionShape2D" parent="Walls" unique_id=1806087107]
+position = Vector2(484, 135)
+shape = SubResource("RectangleShape2D_w8frs")
+
+[node name="Ceiling" type="CollisionShape2D" parent="Walls" unique_id=1835437062]
+position = Vector2(240, -4)
+shape = SubResource("RectangleShape2D_mx8sn")
+
+[node name="DeathZone" type="Area2D" parent="." unique_id=1280444868]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=1690999572]
+position = Vector2(240, 279)
+shape = SubResource("RectangleShape2D_ppgk2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=49383586]
+modulate = Color(1, 1, 1, 0.50980395)
+z_index = -1
+position = Vector2(240, 135)
+texture = ExtResource("4_mx8sn")
+
+[connection signal="body_entered" from="DeathZone" to="Ball" method="_on_death_zone_body_entered"]

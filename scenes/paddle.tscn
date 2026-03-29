@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b1ce7222j5do7"]
+
+[ext_resource type="Script" uid="uid://ik63ob6pdewt" path="res://scripts/paddle.gd" id="1_y7wee"]
+[ext_resource type="Texture2D" uid="uid://8cspi04wr8rv" path="res://sprites/paddle.png" id="2_mo4dg"]
+
+[node name="Paddle" type="CharacterBody2D" unique_id=1854220335]
+collision_mask = 2
+platform_floor_layers = 4294967288
+script = ExtResource("1_y7wee")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=635466976]
+texture = ExtResource("2_mo4dg")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=312367258]
+polygon = PackedVector2Array(-16, 0, 16, 0, 16, 9, -16, 9)
