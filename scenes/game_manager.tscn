@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://y1nfsgne664v" path="res://scripts/game_manager.gd" id="1_hwd4i"]
 [ext_resource type="FontFile" uid="uid://chej3b54ptl4c" path="res://fonts/m6x11.ttf" id="2_glms7"]
 
-[node name="GameManager" type="Node" unique_id=631368840]
+[node name="GameManager" type="CanvasLayer" unique_id=789547894]
 script = ExtResource("1_hwd4i")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=643885237]
@@ -12,6 +12,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/margin_left = 3
 theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
@@ -34,3 +36,10 @@ theme_override_fonts/font = ExtResource("2_glms7")
 theme_override_font_sizes/font_size = 16
 text = "0"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FPSLabel" type="Label" parent="MarginContainer" unique_id=2140779710]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_glms7")

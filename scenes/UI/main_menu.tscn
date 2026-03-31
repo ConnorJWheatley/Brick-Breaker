@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://cx7ptwtj0phjr"]
+
+[ext_resource type="Texture2D" uid="uid://cl5rrw1kwp3y4" path="res://sprites/main_menu.png" id="1_5jstl"]
+[ext_resource type="Script" uid="uid://dn7rgrujcf12t" path="res://scripts/main_menu.gd" id="1_tfcbk"]
+[ext_resource type="FontFile" uid="uid://hljveqphpcks" path="res://fonts/Pix32.ttf" id="2_tfcbk"]
+[ext_resource type="FontFile" uid="uid://chej3b54ptl4c" path="res://fonts/m6x11.ttf" id="3_e2p27"]
+[ext_resource type="Theme" uid="uid://2xm18xnv4ym4" path="res://themes/base_ui_theme.tres" id="4_e2p27"]
+
+[node name="MainMenu" type="Control" unique_id=790724659]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_e2p27")
+script = ExtResource("1_tfcbk")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1183336137]
+modulate = Color(0.14644991, 0.14644991, 0.14644991, 1)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_5jstl")
+
+[node name="GameName" type="Label" parent="." unique_id=575037323]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -123.5
+offset_right = 123.5
+offset_bottom = 41.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_tfcbk")
+theme_override_font_sizes/font_size = 40
+text = "BRICK BREAKER"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1057405605]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartBtn" type="Button" parent="VBoxContainer" unique_id=797205835]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_e2p27")
+theme_override_font_sizes/font_size = 24
+text = "START"
+
+[node name="OptionsBtn" type="Button" parent="VBoxContainer" unique_id=1575132410]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_e2p27")
+theme_override_font_sizes/font_size = 24
+text = "OPTIONS"
+
+[node name="ExitBtn" type="Button" parent="VBoxContainer" unique_id=367436398]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_e2p27")
+theme_override_font_sizes/font_size = 24
+text = "EXIT"
+
+[connection signal="pressed" from="VBoxContainer/StartBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsBtn" to="." method="_on_options_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitBtn" to="." method="_on_exit_btn_pressed"]

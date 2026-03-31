@@ -1,10 +1,11 @@
 class_name Ball
 extends CharacterBody2D
 
+signal game_over
+
 @onready var ball_sprite = $Sprite2D
 
 var speed = 200
-var direction = Vector2.DOWN
 var is_active = true
 
 func _ready() -> void:
@@ -41,9 +42,10 @@ func arkanoid_collision_detection(collision: KinematicCollision2D, ball: Ball) -
 				ball_sprite.modulate = brick_colour
 				collider.hit()
 
-func game_over():
-	GameManager.score = 0
-	get_tree().reload_current_scene()
+func reset_ball():
+	position = Vector2(240, 223)
+	velocity = Vector2(speed * -1, speed)
+	ball_sprite.modulate = Color(1, 1, 1, 1)
 
-func _on_death_zone_body_entered(body: Node2D) -> void:
-	game_over()
+func _on_death_zone_body_entered(_body: Node2D) -> void:
+	emit_signal("game_over")

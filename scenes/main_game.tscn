@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://c5ye4vfb86ila"]
 
 [ext_resource type="PackedScene" uid="uid://b1ce7222j5do7" path="res://scenes/paddle.tscn" id="1_2q6dc"]
-[ext_resource type="Script" uid="uid://cbr82k1ry7rcw" path="res://scripts/level.gd" id="1_w8frs"]
+[ext_resource type="Script" uid="uid://cbr82k1ry7rcw" path="res://scripts/main_game.gd" id="1_w8frs"]
 [ext_resource type="PackedScene" uid="uid://djwhkbbgpo7qi" path="res://scenes/ball.tscn" id="2_w7c3h"]
 [ext_resource type="Texture2D" uid="uid://dn4qxcn23bpgi" path="res://sprites/background.png" id="4_mx8sn"]
+[ext_resource type="PackedScene" uid="uid://clk0njyypo7mf" path="res://scenes/UI/ui_manager.tscn" id="5_ipu61"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7c3h"]
 size = Vector2(8, 274)
@@ -17,17 +18,19 @@ size = Vector2(496, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppgk2"]
 size = Vector2(498, 8)
 
-[node name="Level" type="Node2D" unique_id=987633441]
+[node name="MainGame" type="Node2D" unique_id=987633441]
 script = ExtResource("1_w8frs")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1317101444]
 position = Vector2(240, 135)
 
 [node name="Paddle" parent="." unique_id=880642036 instance=ExtResource("1_2q6dc")]
-position = Vector2(240, 239)
+position = Vector2(240, 240)
 
 [node name="Ball" parent="." unique_id=2095934237 instance=ExtResource("2_w7c3h")]
 position = Vector2(240, 223)
+
+[node name="Bricks" type="Node2D" parent="." unique_id=2075184785]
 
 [node name="Walls" type="StaticBody2D" parent="." unique_id=865495383]
 
@@ -56,5 +59,7 @@ modulate = Color(1, 1, 1, 0.50980395)
 z_index = -1
 position = Vector2(240, 135)
 texture = ExtResource("4_mx8sn")
+
+[node name="UIManager" parent="." unique_id=1097562864 instance=ExtResource("5_ipu61")]
 
 [connection signal="body_entered" from="DeathZone" to="Ball" method="_on_death_zone_body_entered"]

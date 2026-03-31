@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://dootxuic6c08o"]
+
+[ext_resource type="Script" uid="uid://x1rql8hfdb6r" path="res://scripts/options_menu.gd" id="1_ijpji"]
+[ext_resource type="FontFile" uid="uid://chej3b54ptl4c" path="res://fonts/m6x11.ttf" id="2_hm4m4"]
+
+[node name="OptionsMenu" type="CanvasLayer" unique_id=971662927]
+script = ExtResource("1_ijpji")
+
+[node name="Control" type="Control" parent="." unique_id=1642922915]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=503877166]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 196.0
+offset_top = 125.0
+offset_right = 278.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Header" type="Label" parent="Control/VBoxContainer" unique_id=59740770]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_hm4m4")
+text = "OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShowFpsContainer" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=34950544]
+layout_mode = 2
+theme_override_constants/separation = 41
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/ShowFpsContainer" unique_id=1839649806]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hm4m4")
+text = "Show FPS:"
+
+[node name="OptionButton" type="OptionButton" parent="Control/VBoxContainer/ShowFpsContainer" unique_id=50328121]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hm4m4")
+selected = 0
+fit_to_longest_item = false
+item_count = 2
+popup/item_0/text = "No"
+popup/item_0/id = 0
+popup/item_1/text = "Yes"
+popup/item_1/id = 1
+
+[node name="MaxFpsContainer" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=730256474]
+layout_mode = 2
+
+[node name="SetFPS" type="Label" parent="Control/VBoxContainer/MaxFpsContainer" unique_id=77166212]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hm4m4")
+text = "Select Max FPS:"
+
+[node name="FPSDropdown" type="OptionButton" parent="Control/VBoxContainer/MaxFpsContainer" unique_id=849168739]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hm4m4")
+selected = 0
+fit_to_longest_item = false
+item_count = 5
+popup/item_0/text = "30"
+popup/item_0/id = 0
+popup/item_1/text = "60"
+popup/item_1/id = 1
+popup/item_2/text = "144"
+popup/item_2/id = 2
+popup/item_3/text = "240"
+popup/item_3/id = 3
+popup/item_4/text = "Unlimited"
+popup/item_4/id = 4
+
+[node name="VsyncContainer" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=901625597]
+layout_mode = 2
+theme_override_constants/separation = 36
+
+[node name="SetVsync" type="Label" parent="Control/VBoxContainer/VsyncContainer" unique_id=250985284]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hm4m4")
+text = "Set Vsync:"
+
+[node name="VSyncDropdown" type="OptionButton" parent="Control/VBoxContainer/VsyncContainer" unique_id=589385915]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hm4m4")
+selected = 1
+item_count = 2
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "On"
+popup/item_1/id = 1
+
+[connection signal="item_selected" from="Control/VBoxContainer/MaxFpsContainer/FPSDropdown" to="." method="_on_fps_dropdown_item_selected"]
+[connection signal="item_selected" from="Control/VBoxContainer/VsyncContainer/VSyncDropdown" to="." method="_on_v_sync_dropdown_item_selected"]

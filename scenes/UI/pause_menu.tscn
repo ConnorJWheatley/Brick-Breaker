@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bngdvrrwc706"]
+
+[ext_resource type="Theme" uid="uid://2xm18xnv4ym4" path="res://themes/base_ui_theme.tres" id="1_mko1u"]
+[ext_resource type="Script" uid="uid://dd078gdu5nbbo" path="res://scripts/pause_menu.gd" id="1_myx47"]
+[ext_resource type="FontFile" uid="uid://chej3b54ptl4c" path="res://fonts/m6x11.ttf" id="2_kukqi"]
+
+[node name="PauseMenu" type="Control" unique_id=751797415]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_mko1u")
+script = ExtResource("1_myx47")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1183627688]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.35686275)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2145248339]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -68.0
+offset_right = 52.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ResumeBtn" type="Button" parent="VBoxContainer" unique_id=1648677959]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kukqi")
+text = "RESUME"
+
+[node name="RestartBtn" type="Button" parent="VBoxContainer" unique_id=928661887]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kukqi")
+text = "RESTART"
+
+[node name="OptionsBtn" type="Button" parent="VBoxContainer" unique_id=1739468171]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kukqi")
+text = "OPTIONS"
+
+[node name="QuitToMenuBtn" type="Button" parent="VBoxContainer" unique_id=1502810013]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kukqi")
+text = "MAIN MENU"
+
+[connection signal="pressed" from="VBoxContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/RestartBtn" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsBtn" to="." method="_on_options_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitToMenuBtn" to="." method="_on_quit_to_menu_btn_pressed"]
