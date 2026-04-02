@@ -15,9 +15,10 @@ func hit():
 	
 	var bricks_left = get_tree().get_nodes_in_group("Brick")
 	if bricks_left.size() == 1:
-		get_parent().get_node("Ball").is_active = false
-		await get_tree().create_timer(1).timeout
+		get_parent().get_parent().get_node("Ball").is_active = false
 		GameManager.level += 1
-
-	await get_tree().create_timer(1).timeout
-	queue_free()
+		await get_tree().create_timer(1).timeout
+		# send signal to restart level??
+	else:
+		await get_tree().create_timer(1).timeout
+		queue_free()

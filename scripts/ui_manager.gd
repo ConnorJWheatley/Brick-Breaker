@@ -22,7 +22,9 @@ func _ready():
 	
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		sfx_pause.play()
+		# prevents sound playing when on main menu where pressing esc does nothing
+		if !main_menu.visible:
+			sfx_pause.play()
 		_on_pause_requested()
 	
 func main_menu_signals():
@@ -51,6 +53,7 @@ func _on_pause_requested() -> void:
 	# check what UI state the game is in
 	if main_menu.visible:
 		return
+	# pausing when playing game
 	if pause_menu.visible == false and options_menu.visible == false:
 		pause_menu.visible = true
 		get_tree().paused = true

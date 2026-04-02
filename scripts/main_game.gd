@@ -21,12 +21,19 @@ func _ready() -> void:
 	connect_to_signals()
 	
 func connect_to_signals():
-	ui_manager.start_game_requested.connect(reset_level)
+	ui_manager.start_game_requested.connect(new_level)
 	ui_manager.restart_game_requested.connect(reset_level)
+	ball.level_won.connect(new_level)
 
 func setup_level():
 	var colours = get_colours()
-	colours.shuffle()
+	colours.shuffle()#
+	
+	# setting game difficulty
+	#cols = 4
+	rows = 0 + GameManager.level
+	if rows > 8:
+		rows = 8 # limiting row length
 	
 	for r in rows:
 		for c in cols:
@@ -56,11 +63,28 @@ func reset_level():
 	GameManager.level = 1
 	# clear level before instancing new one
 	clear_level()
+	
 	# call setup_level()
 	call_deferred("setup_level")
+	
 	# reset paddle and ball position
 	paddle.position = PADDLE_POS
 	ball.reset_ball()
+	ball.speed = ball.BASE_SPEED
+
+func new_level():
+	clear_level()
+	
+	# call setup_level()
+	call_deferred("setup_level")
+	
+	# reset paddle and ball position
+	paddle.position = PADDLE_POS
+	ball.reset_ball()
+	
+	ball.is_active = true
+	# could maybe make configurable at some point? before starting game have a UI screen to set increases like this
+	ball.speed = ball.speed + (7.5 * GameManager.level)
 
 func _on_game_over():
 	reset_level()

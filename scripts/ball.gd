@@ -1,10 +1,13 @@
 class_name Ball
 extends CharacterBody2D
 
+signal level_won
 signal game_over
 
 @onready var ball_sprite = $Sprite2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
+const BASE_SPEED = 200
 
 var speed = 200
 var is_active = true
@@ -18,15 +21,18 @@ func _physics_process(delta: float) -> void:
 		
 		# physics_collision_detection(collision)
 		arkanoid_collision_detection(collision, self)
+	if !is_active:
+		# level has been won, send signal to reset level and start again
+		emit_signal("level_won")
 			
-func physics_collision_detection(collision: KinematicCollision2D) -> void:
-	if collision:
-		velocity = velocity.bounce(collision.get_normal())
-		# Push ball out of paddle slightly
-		position += collision.get_normal() * 2
-		
-		if collision.get_collider().has_method("hit"):
-			collision.get_collider().hit()
+#func physics_collision_detection(collision: KinematicCollision2D) -> void:
+	#if collision:
+		#velocity = velocity.bounce(collision.get_normal())
+		## Push ball out of paddle slightly
+		#position += collision.get_normal() * 2
+		#
+		#if collision.get_collider().has_method("hit"):
+			#collision.get_collider().hit()
 
 func arkanoid_collision_detection(collision: KinematicCollision2D, ball: Ball) -> void:
 	if collision:
