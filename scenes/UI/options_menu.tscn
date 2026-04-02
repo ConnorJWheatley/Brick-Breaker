@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://x1rql8hfdb6r" path="res://scripts/options_menu.gd" id="1_ijpji"]
 [ext_resource type="Theme" uid="uid://2xm18xnv4ym4" path="res://themes/base_ui_theme.tres" id="1_qgort"]
 [ext_resource type="FontFile" uid="uid://chej3b54ptl4c" path="res://fonts/m6x11.ttf" id="2_hm4m4"]
+[ext_resource type="AudioStream" uid="uid://d4l6rdp16mn73" path="res://sfx/Confirm 1.wav" id="4_6mmsa"]
+[ext_resource type="AudioStream" uid="uid://mpc2ir13vqc4" path="res://sfx/Cancel 1.wav" id="5_5tpni"]
 
 [node name="OptionsMenu" type="Control" unique_id=147815465]
 layout_mode = 3
@@ -109,7 +111,16 @@ offset_bottom = 30.0
 theme_override_fonts/font = ExtResource("2_hm4m4")
 text = "< BACK"
 
+[node name="sfx_confirm" type="AudioStreamPlayer2D" parent="." unique_id=1822430136]
+stream = ExtResource("4_6mmsa")
+volume_db = -10.0
+
+[node name="sfx_cancel" type="AudioStreamPlayer2D" parent="." unique_id=1103151989]
+stream = ExtResource("5_5tpni")
+volume_db = -12.0
+
 [connection signal="toggled" from="OptionsContainer/ShowFpsContainer/ShowFpsButton" to="." method="_on_show_fps_button_toggled"]
 [connection signal="item_selected" from="OptionsContainer/MaxFpsContainer/FPSDropdown" to="." method="_on_fps_dropdown_item_selected"]
+[connection signal="toggled" from="OptionsContainer/MaxFpsContainer/FPSDropdown" to="." method="_on_fps_dropdown_toggled"]
 [connection signal="toggled" from="OptionsContainer/VsyncContainer/VSyncDropdown" to="." method="_on_v_sync_dropdown_toggled"]
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]

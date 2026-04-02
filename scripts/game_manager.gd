@@ -25,5 +25,4 @@ func reset_points():
 	level = 1
 	
 func toggle_show_fps_label(toggled_on):
-	print(toggled_on)
 	show_fps_label.visible = toggled_on

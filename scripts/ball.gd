@@ -4,6 +4,7 @@ extends CharacterBody2D
 signal game_over
 
 @onready var ball_sprite = $Sprite2D
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var speed = 200
 var is_active = true
@@ -15,7 +16,7 @@ func _physics_process(delta: float) -> void:
 	if is_active:
 		var collision = move_and_collide(velocity * delta)
 		
-		#physics_collision_detection(collision)
+		# physics_collision_detection(collision)
 		arkanoid_collision_detection(collision, self)
 			
 func physics_collision_detection(collision: KinematicCollision2D) -> void:
@@ -34,6 +35,8 @@ func arkanoid_collision_detection(collision: KinematicCollision2D, ball: Ball) -
 			var offset_x = ball.position.x - collider.position.x
 			var new_direction = Vector2(offset_x, -15.0).normalized()
 			ball.velocity = new_direction * ball.speed
+			
+			audio_stream_player_2d.play()
 		else:
 			ball.velocity = ball.velocity.bounce(collision.get_normal())
 			if collider is Brick:

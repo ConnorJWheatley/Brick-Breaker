@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dc0leb1m5wt77" path="res://scripts/ball.gd" id="1_cxlvu"]
 [ext_resource type="Texture2D" uid="uid://7eq420ybp1xf" path="res://sprites/new_ball.png" id="2_cxlvu"]
+[ext_resource type="AudioStream" uid="uid://bv005lr836bn6" path="res://sfx/Hit damage 1.wav" id="3_f7cbr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4dx81"]
 radius = 5.0
@@ -19,3 +20,7 @@ texture = ExtResource("2_cxlvu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1929156242]
 shape = SubResource("CircleShape2D_4dx81")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1435112596]
+stream = ExtResource("3_f7cbr")
+volume_db = -15.0

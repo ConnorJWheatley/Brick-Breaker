@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bngdvrrwc706" path="res://scenes/UI/pause_menu.tscn" id="1_iku3t"]
 [ext_resource type="PackedScene" uid="uid://cx7ptwtj0phjr" path="res://scenes/UI/main_menu.tscn" id="1_xyqvb"]
 [ext_resource type="PackedScene" uid="uid://dootxuic6c08o" path="res://scenes/UI/options_menu.tscn" id="2_reske"]
+[ext_resource type="AudioStream" uid="uid://bce72hf335rdc" path="res://sfx/Select 1.wav" id="5_s0kab"]
 
 [node name="UIManager" type="CanvasLayer" unique_id=1097562864]
 process_mode = 3
@@ -16,3 +17,7 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_use_anchors_ = true
 
 [node name="OptionsMenu" parent="." unique_id=147815465 instance=ExtResource("2_reske")]
+
+[node name="sfx_pause" type="AudioStreamPlayer2D" parent="." unique_id=1781848775]
+stream = ExtResource("5_s0kab")
+volume_db = -10.0

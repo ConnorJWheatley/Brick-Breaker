@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://2xm18xnv4ym4" path="res://themes/base_ui_theme.tres" id="1_mko1u"]
 [ext_resource type="Script" uid="uid://dd078gdu5nbbo" path="res://scripts/pause_menu.gd" id="1_myx47"]
 [ext_resource type="FontFile" uid="uid://chej3b54ptl4c" path="res://fonts/m6x11.ttf" id="2_kukqi"]
+[ext_resource type="AudioStream" uid="uid://d4l6rdp16mn73" path="res://sfx/Confirm 1.wav" id="4_feath"]
 
 [node name="PauseMenu" type="Control" unique_id=751797415]
 process_mode = 3
@@ -59,6 +60,10 @@ text = "OPTIONS"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_kukqi")
 text = "MAIN MENU"
+
+[node name="sfx_confirm" type="AudioStreamPlayer2D" parent="." unique_id=1977696396]
+stream = ExtResource("4_feath")
+volume_db = -10.0
 
 [connection signal="pressed" from="VBoxContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/RestartBtn" to="." method="_on_restart_btn_pressed"]

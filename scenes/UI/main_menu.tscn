@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://hljveqphpcks" path="res://fonts/Pix32.ttf" id="2_tfcbk"]
 [ext_resource type="FontFile" uid="uid://chej3b54ptl4c" path="res://fonts/m6x11.ttf" id="3_e2p27"]
 [ext_resource type="Theme" uid="uid://2xm18xnv4ym4" path="res://themes/base_ui_theme.tres" id="4_e2p27"]
+[ext_resource type="AudioStream" uid="uid://d4l6rdp16mn73" path="res://sfx/Confirm 1.wav" id="6_ngj32"]
 
 [node name="MainMenu" type="Control" unique_id=790724659]
 layout_mode = 3
@@ -68,6 +69,10 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_e2p27")
 theme_override_font_sizes/font_size = 24
 text = "EXIT"
+
+[node name="sfx_confirm" type="AudioStreamPlayer2D" parent="." unique_id=1072586621]
+stream = ExtResource("6_ngj32")
+volume_db = -10.0
 
 [connection signal="pressed" from="VBoxContainer/StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsBtn" to="." method="_on_options_btn_pressed"]

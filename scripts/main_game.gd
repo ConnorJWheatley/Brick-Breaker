@@ -20,10 +20,6 @@ func _ready() -> void:
 	ball.game_over.connect(_on_game_over)
 	connect_to_signals()
 	
-#func _input(event):
-	#if event.is_action_pressed("ui_cancel"):
-		#emit_signal("pause_requested")
-	
 func connect_to_signals():
 	ui_manager.start_game_requested.connect(reset_level)
 	ui_manager.restart_game_requested.connect(reset_level)
