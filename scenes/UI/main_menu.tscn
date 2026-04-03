@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://hljveqphpcks" path="res://fonts/Pix32.ttf" id="2_tfcbk"]
 [ext_resource type="FontFile" uid="uid://chej3b54ptl4c" path="res://fonts/m6x11.ttf" id="3_e2p27"]
 [ext_resource type="Theme" uid="uid://2xm18xnv4ym4" path="res://themes/base_ui_theme.tres" id="4_e2p27"]
-[ext_resource type="AudioStream" uid="uid://d4l6rdp16mn73" path="res://sfx/Confirm 1.wav" id="6_ngj32"]
+[ext_resource type="AudioStream" uid="uid://d4l6rdp16mn73" path="res://audio/sfx/Confirm 1.wav" id="6_ngj32"]
 
 [node name="MainMenu" type="Control" unique_id=790724659]
 layout_mode = 3

@@ -7,6 +7,7 @@ extends Node2D
 @onready var ball: Ball = $Ball
 @onready var bricks: Node2D = $Bricks
 @onready var ui_manager: UIManager = $UIManager
+@onready var main_theme: AudioStreamPlayer2D = $MainTheme
 
 const PADDLE_POS = Vector2(240, 240)
 
@@ -16,6 +17,7 @@ var margin = 15
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	main_theme.play()
 	setup_level()
 	ball.game_over.connect(_on_game_over)
 	connect_to_signals()

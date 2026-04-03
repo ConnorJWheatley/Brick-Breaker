@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://x1rql8hfdb6r" path="res://scripts/options_menu.gd" id="1_ijpji"]
 [ext_resource type="Theme" uid="uid://2xm18xnv4ym4" path="res://themes/base_ui_theme.tres" id="1_qgort"]
 [ext_resource type="FontFile" uid="uid://chej3b54ptl4c" path="res://fonts/m6x11.ttf" id="2_hm4m4"]
-[ext_resource type="AudioStream" uid="uid://d4l6rdp16mn73" path="res://sfx/Confirm 1.wav" id="4_6mmsa"]
-[ext_resource type="AudioStream" uid="uid://mpc2ir13vqc4" path="res://sfx/Cancel 1.wav" id="5_5tpni"]
+[ext_resource type="AudioStream" uid="uid://d4l6rdp16mn73" path="res://audio/sfx/Confirm 1.wav" id="4_6mmsa"]
+[ext_resource type="AudioStream" uid="uid://mpc2ir13vqc4" path="res://audio/sfx/Cancel 1.wav" id="5_5tpni"]
 
 [node name="OptionsMenu" type="Control" unique_id=147815465]
 layout_mode = 3

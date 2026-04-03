@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://2xm18xnv4ym4" path="res://themes/base_ui_theme.tres" id="1_mko1u"]
 [ext_resource type="Script" uid="uid://dd078gdu5nbbo" path="res://scripts/pause_menu.gd" id="1_myx47"]
 [ext_resource type="FontFile" uid="uid://chej3b54ptl4c" path="res://fonts/m6x11.ttf" id="2_kukqi"]
-[ext_resource type="AudioStream" uid="uid://d4l6rdp16mn73" path="res://sfx/Confirm 1.wav" id="4_feath"]
+[ext_resource type="AudioStream" uid="uid://d4l6rdp16mn73" path="res://audio/sfx/Confirm 1.wav" id="4_feath"]
 
 [node name="PauseMenu" type="Control" unique_id=751797415]
 process_mode = 3

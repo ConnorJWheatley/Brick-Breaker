@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://djwhkbbgpo7qi" path="res://scenes/ball.tscn" id="2_w7c3h"]
 [ext_resource type="Texture2D" uid="uid://dn4qxcn23bpgi" path="res://sprites/background.png" id="4_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://clk0njyypo7mf" path="res://scenes/UI/ui_manager.tscn" id="5_ipu61"]
+[ext_resource type="AudioStream" uid="uid://brnbssseuo1m7" path="res://audio/music/main_theme.mp3" id="6_ygxny"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7c3h"]
 size = Vector2(8, 274)
@@ -61,5 +62,10 @@ position = Vector2(240, 135)
 texture = ExtResource("4_mx8sn")
 
 [node name="UIManager" parent="." unique_id=1097562864 instance=ExtResource("5_ipu61")]
+
+[node name="MainTheme" type="AudioStreamPlayer2D" parent="." unique_id=164248746]
+stream = ExtResource("6_ygxny")
+volume_db = -8.0
+autoplay = true
 
 [connection signal="body_entered" from="DeathZone" to="Ball" method="_on_death_zone_body_entered"]

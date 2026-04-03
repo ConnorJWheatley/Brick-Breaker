@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 var score: int = 0
-var level: int = 10
+var level: int = 1
 
 @onready var score_label: Label = $MarginContainer/ScoreLabel
 @onready var level_label: Label = $MarginContainer/LevelLabel
