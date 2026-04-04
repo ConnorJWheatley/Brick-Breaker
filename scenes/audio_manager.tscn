@@ -1,6 +1,18 @@
 [gd_scene format=3 uid="uid://c15ymvtgccstd"]
 
 [ext_resource type="Script" uid="uid://b64nh8atanho4" path="res://scripts/audio_manager.gd" id="1_8qd8g"]
+[ext_resource type="AudioStream" uid="uid://brnbssseuo1m7" path="res://audio/music/main_theme.mp3" id="2_3asnw"]
+[ext_resource type="AudioStream" uid="uid://cl0u2ue74uy8x" path="res://audio/music/game_over.mp3" id="3_m6ggh"]
 
 [node name="AudioManager" type="Node2D" unique_id=642050387]
+process_mode = 3
 script = ExtResource("1_8qd8g")
+
+[node name="MainTheme" type="AudioStreamPlayer2D" parent="." unique_id=1505010897]
+stream = ExtResource("2_3asnw")
+volume_db = -10.0
+bus = &"Main Theme"
+
+[node name="GameOver" type="AudioStreamPlayer2D" parent="." unique_id=2088340370]
+stream = ExtResource("3_m6ggh")
+volume_db = -10.0

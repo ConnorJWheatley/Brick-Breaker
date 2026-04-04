@@ -7,6 +7,9 @@ signal show_fps_toggled(toggled_on)
 
 @onready var sfx_confirm: AudioStreamPlayer2D = $sfx_confirm
 @onready var sfx_cancel: AudioStreamPlayer2D = $sfx_cancel
+@onready var master_volume_label: Label = $OptionsContainer/MasterVolumeContainer/MasterVolumeLabel
+
+var master_bus := AudioServer.get_bus_index("Master")
 
 const FPS_DICT = {
 	0: 30,
@@ -48,3 +51,8 @@ func _on_back_btn_pressed() -> void:
 
 func _on_fps_dropdown_toggled(toggled_on: bool) -> void:
 	sfx_choice(toggled_on)
+
+func _on_h_slider_value_changed(value: float) -> void:
+	var db = linear_to_db(value) - 40
+	master_volume_label.text = "Master Volume: " + str(value)
+	AudioServer.set_bus_volume_db(master_bus, db)

@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bu4jputrqdiyf"]
+
+[ext_resource type="Theme" uid="uid://2xm18xnv4ym4" path="res://themes/base_ui_theme.tres" id="1_njkqv"]
+[ext_resource type="Script" uid="uid://bddc21xy3iqng" path="res://scripts/game_over.gd" id="2_vop4n"]
+[ext_resource type="Texture2D" uid="uid://bitimk8too68e" path="res://sprites/game_over_vignette.png" id="3_a2ham"]
+[ext_resource type="AudioStream" uid="uid://cl0u2ue74uy8x" path="res://audio/music/game_over.mp3" id="3_l48yu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vop4n"]
+bg_color = Color(0, 0, 0, 0.39215687)
+
+[node name="GameOver" type="Control" unique_id=1904033336]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_njkqv")
+script = ExtResource("2_vop4n")
+
+[node name="Vignette" type="Sprite2D" parent="." unique_id=1337017010]
+position = Vector2(240, 135)
+texture = ExtResource("3_a2ham")
+
+[node name="Panel" type="Panel" parent="." unique_id=322813395]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vop4n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=437863019]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="VBoxContainer" unique_id=105337432]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 33
+text = "GAME OVER"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=992002856]
+layout_mode = 2
+
+[node name="RestartBtn" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=625912285]
+layout_mode = 2
+text = "RESTART"
+
+[node name="MainMenuBtn" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=415126287]
+layout_mode = 2
+text = "MAIN MENU"
+
+[node name="music_GameOver" type="AudioStreamPlayer2D" parent="." unique_id=535843944]
+stream = ExtResource("3_l48yu")
+volume_db = -10.0
+bus = &"Music"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RestartBtn" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MainMenuBtn" to="." method="_on_main_menu_btn_pressed"]

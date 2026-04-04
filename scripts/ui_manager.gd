@@ -10,6 +10,7 @@ signal restart_game_requested
 @onready var pause_menu: PauseMenu = $PauseMenu
 @onready var options_menu: OptionsMenu = $OptionsMenu
 @onready var sfx_pause: AudioStreamPlayer2D = $sfx_pause
+@onready var game_over_menu: GameOver = $GameOver
 
 enum MENU_STATE {MAIN, PAUSE, OPTIONS}
 var previous_menu_state: MENU_STATE = MENU_STATE.MAIN
@@ -18,7 +19,9 @@ func _ready():
 	main_menu_signals()
 	pause_menu_signals()
 	options_menu_signals()
+	game_over_menu_signals()
 	game_start_up()
+	main_game.game_over.connect(_on_game_over)
 	
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -40,9 +43,14 @@ func options_menu_signals():
 	options_menu.back_pressed.connect(_on_back_pressed)
 	options_menu.show_fps_toggled.connect(_on_show_fps_toggled)
 
+func game_over_menu_signals():
+	game_over_menu.restart_pressed.connect(_on_restart_requested)
+	game_over_menu.main_menu_pressed.connect(_on_quit_to_menu_pressed)
+
 func game_start_up():
 	pause_menu.visible = false
 	options_menu.visible = false
+	game_over_menu.visible = false
 	get_tree().paused = true
 
 func pause_game():
@@ -76,8 +84,10 @@ func _on_pause_requested() -> void:
 # Main Menu Signals	
 func _on_start_pressed():
 	main_menu.visible = false
+	game_over_menu.visible = false
 	get_tree().paused = false
 	emit_signal("start_game_requested")
+	AudioManager.play_main_theme()
 	
 func _on_back_pressed():
 	if previous_menu_state == MENU_STATE.MAIN:
@@ -90,11 +100,20 @@ func _on_back_pressed():
 # Pause Menu Signals
 func _on_restart_requested():
 	pause_menu.visible = false
+	game_over_menu.visible = false
+	get_tree().paused = false
 	emit_signal("restart_game_requested")
+	AudioManager.play_main_theme()
 	
 # Options Menu Signals
 func _on_show_fps_toggled(toggled_on):
 	GameManager.toggle_show_fps_label(toggled_on)
+
+# Game Over
+func _on_game_over():
+	get_tree().paused = true
+	game_over_menu.visible = true
+	AudioManager.play_game_over()
 
 # Shared
 func _on_option_pressed(menu_state: MENU_STATE):
@@ -106,8 +125,9 @@ func _on_option_pressed(menu_state: MENU_STATE):
 	pause_menu.visible = false
 	options_menu.visible = true
 
-# will also be used when game over happens
 func _on_quit_to_menu_pressed():
 	get_tree().paused = true
 	pause_menu.visible = false
+	game_over_menu.visible = false
 	main_menu.visible = true
+	AudioManager.stop_game_over()

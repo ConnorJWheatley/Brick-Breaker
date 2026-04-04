@@ -2,12 +2,13 @@ class_name MainGame
 
 extends Node2D
 
+signal game_over
+
 @onready var brick_object = preload("res://scenes/brick.tscn")
 @onready var paddle: Paddle = $Paddle
 @onready var ball: Ball = $Ball
 @onready var bricks: Node2D = $Bricks
 @onready var ui_manager: UIManager = $UIManager
-@onready var main_theme: AudioStreamPlayer2D = $MainTheme
 
 const PADDLE_POS = Vector2(240, 240)
 
@@ -17,7 +18,6 @@ var margin = 15
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	main_theme.play()
 	setup_level()
 	ball.game_over.connect(_on_game_over)
 	connect_to_signals()
@@ -32,7 +32,6 @@ func setup_level():
 	colours.shuffle()#
 	
 	# setting game difficulty
-	#cols = 4
 	rows = 0 + GameManager.level
 	if rows > 8:
 		rows = 8 # limiting row length
@@ -75,6 +74,7 @@ func reset_level():
 	ball.speed = ball.BASE_SPEED
 
 func new_level():
+	# clears any lingering bricks
 	clear_level()
 	
 	# call setup_level()
@@ -86,12 +86,10 @@ func new_level():
 	
 	ball.is_active = true
 	# could maybe make configurable at some point? before starting game have a UI screen to set increases like this
-	ball.speed = ball.speed + (7.5 * GameManager.level)
+	ball.speed = ball.speed + (4.5 * GameManager.level)
 
 func _on_game_over():
-	reset_level()
-	# will change to send to another screen to enter name for high score or something
-	# and option to restart or go back to main menu
+	emit_signal("game_over")
 
 func get_colours():
 	var colours = [
